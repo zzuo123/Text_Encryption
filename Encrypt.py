@@ -14,9 +14,11 @@ How to use:
 -------------------------------------------------------------------------------------------
 """
 
-import pyperclip, random
+import pyperclip
+import random
+import sys
 
-file_path = "YOUR FILE LOCARION"
+file_path = "Your File Path"
 
 
 def read():
@@ -90,7 +92,7 @@ def encrypt():
     for string in pars:
         result.append(helper(string, i, True))
     password = (i % 10 * 10) + int(i / 10)
-    print("REMEMBER your password is: "+str(password))
+    print("REMEMBER your password is: " + str(password))
     pyperclip.copy(password)
     write(result)
 
@@ -103,4 +105,30 @@ def decrypt():  # this i is reverse of what user inputs
         result.append(helper(string, i, False))
     write(result)
 
-decrypt()
+
+# ------------------------------------------------------------------------------------------------------------------------------------
+# This part of the code is optional. It can be useful if you are planning to create a batch file and run this program on command line.
+# ------------------------------------------------------------------------------------------------------------------------------------
+
+
+if len(sys.argv) < 2:
+    print('Usage: py Encrypt.py [keyphrase] - encrypt, decrypt, set, exit')
+    sys.argv.append(input("what do you want to do?").lower())
+keyphrase = sys.argv[1].lower()  # first command line arg is the keyphrase
+
+while keyphrase not in {'encrypt', 'decrypt', 'exit', 'set'}:
+    keyphrase = input(
+        'Input ' + keyphrase + ' is incorrect. What do you want to do? (encrypt, decrypt, set, exit): ').lower()
+
+if keyphrase == 'exit':
+    sys.exit()
+elif keyphrase == 'set':
+    file_path = input("what is the new file path? ")
+    keyphrase = input("what is your next action? (encrypt, decrypt) ")
+
+if keyphrase == 'encrypt':
+    encrypt()
+elif keyphrase == 'decrypt':
+    decrypt()
+else:
+    pass
