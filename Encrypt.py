@@ -1,5 +1,5 @@
 """
-This is a text encryption program made by Zhiyang Zuo (copyrighted)
+This is a text encryption program made by Zhiyang Zuo
 How to use:
 1. create a .txt file
 2. copy and past .txt file location to code
