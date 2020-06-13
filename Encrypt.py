@@ -14,11 +14,12 @@ How to use:
 -------------------------------------------------------------------------------------------
 """
 
+
 import pyperclip
 import random
 import sys
 
-file_path = "Your File Path"
+file_path = "C:\George\PyCharm_Files\Text_Encryption\\text.txt"
 
 
 def read():
